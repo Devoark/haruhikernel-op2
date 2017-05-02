@@ -37,25 +37,24 @@ static struct req_queue_data req_queues = {
 static void change_elevator(struct req_queue_data *r, bool use_noop)
 {
 	struct request_queue *q = r->queue;
-	char name[ELV_NAME_MAX];
 
 	if (r->using_noop == use_noop)
 		return;
 
 	r->using_noop = use_noop;
 
-	spin_lock_irq(q->queue_lock);
-	strcpy(name, q->elevator->type->elevator_name);
-	spin_unlock_irq(q->queue_lock);
-
 	if (use_noop) {
+<<<<<<< HEAD
 		if (strcmp(name, NOOP_IOSCHED)) {
 			strcpy(r->prev_e, name);
 			elevator_change(q, NOOP_IOSCHED);
 		}
+=======
+		strcpy(r->prev_e, q->elevator->type->elevator_name);
+		elevator_change(q, NOOP_IOSCHED);
+>>>>>>> 7588e47... iosched_switcher: Remove unneeded code in change_elevator()
 	} else {
-		if (!strcmp(name, NOOP_IOSCHED))
-			elevator_change(q, r->prev_e);
+		elevator_change(q, r->prev_e);
 	}
 }
 
