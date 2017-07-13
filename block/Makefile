@@ -22,12 +22,10 @@ obj-$(CONFIG_IOSCHED_TEST)	+= test-iosched.o
 obj-$(CONFIG_IOSCHED_SIO)	+= sio-iosched.o
 obj-$(CONFIG_IOSCHED_FIOPS)	+= fiops-iosched.o
 obj-$(CONFIG_IOSCHED_ZEN)	+= zen-iosched.o
-<<<<<<< HEAD
 obj-$(CONFIG_IOSCHED_SIOPLUS)   	+= sioplus-iosched.o
 obj-$(CONFIG_IOSCHED_TRIPNDROID)        += tripndroid-iosched.o
-=======
 obj-$(CONFIG_IOSCHED_SWITCHER) += iosched_switcher.o
->>>>>>> 86299d8... block: Add driver to change the I/O scheduler when the screen turns off
+
 
 obj-$(CONFIG_BLOCK_COMPAT)	+= compat_ioctl.o
 obj-$(CONFIG_BLK_DEV_INTEGRITY)	+= blk-integrity.o
