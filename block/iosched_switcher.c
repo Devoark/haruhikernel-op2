@@ -44,15 +44,8 @@ static void change_elevator(struct req_queue_data *r, bool use_noop)
 	r->using_noop = use_noop;
 
 	if (use_noop) {
-<<<<<<< HEAD
-		if (strcmp(name, NOOP_IOSCHED)) {
-			strcpy(r->prev_e, name);
-			elevator_change(q, NOOP_IOSCHED);
-		}
-=======
 		strcpy(r->prev_e, q->elevator->type->elevator_name);
 		elevator_change(q, NOOP_IOSCHED);
->>>>>>> 7588e47... iosched_switcher: Remove unneeded code in change_elevator()
 	} else {
 		elevator_change(q, r->prev_e);
 	}
