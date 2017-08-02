@@ -326,8 +326,6 @@ static struct task_struct *dup_task_struct(struct task_struct *orig)
 	if (err)
 		goto free_ti;
 
-	tsk->flags &= ~PF_SU;
-
 	tsk->stack = ti;
 #ifdef CONFIG_SECCOMP
 	/*
@@ -1374,7 +1372,7 @@ static struct task_struct *copy_process(unsigned long clone_flags,
 #endif
 
 	/* Perform scheduler related setup. Assign this task to a CPU. */
-	sched_fork(p);
+	sched_fork(clone_flags, p);
 
 	retval = perf_event_init_task(p);
 	if (retval)
